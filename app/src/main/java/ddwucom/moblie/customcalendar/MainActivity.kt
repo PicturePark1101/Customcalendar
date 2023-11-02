@@ -2,7 +2,6 @@ package ddwucom.moblie.customcalendar
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import ddwucom.moblie.customcalendar.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -13,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(mainBinding.root)
 
         mainBinding.bottomNavi.setOnNavigationItemReselectedListener { item ->
-            when(item.itemId) {
+            when (item.itemId) {
                 R.id.page_1 -> {
                     // Respond to navigation item 1 reselection
                 }
@@ -27,10 +26,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun replaceFragment(fragment: Fragment) {
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frameLayout, fragment)
-        fragmentTransaction.commit()
-    }
-
+//    fun replaceFragment(fragment: Fragment) {
+//        val fragmentTransaction = supportFragmentManager.beginTransaction()
+//        fragmentTransaction.replace(R.id.frameLayout, fragment)
+//        fragmentTransaction.commit()
+//    }
 }
