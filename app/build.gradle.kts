@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "ddwucom.moblie.customcalendar"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "ddwucom.moblie.customcalendar"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -33,9 +33,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-//    viewBinding {
-//        enabled = true
-//    }
+
     buildFeatures {
         viewBinding = true
     }
