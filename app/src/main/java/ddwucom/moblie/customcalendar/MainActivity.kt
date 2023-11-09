@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationBarView
 import ddwucom.moblie.customcalendar.databinding.ActivityMainBinding
+import ddwucom.moblie.customcalendar.presentation.calendar.CalendarTotalFragment
+import ddwucom.moblie.customcalendar.presentation.HomeFragment
+import ddwucom.moblie.customcalendar.presentation.MyInfoFragment
 
 class MainActivity : AppCompatActivity() {
     lateinit var mainBinding: ActivityMainBinding
