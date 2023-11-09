@@ -1,34 +1,55 @@
 package ddwucom.moblie.customcalendar
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.google.android.material.navigation.NavigationBarView
 import ddwucom.moblie.customcalendar.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var mainBinding: ActivityMainBinding
 
+    lateinit var homeFragment: HomeFragment
+    lateinit var calendarTotalFragment: CalendarTotalFragment
+    lateinit var myInfoFragment: MyInfoFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
+        homeFragment = HomeFragment()
+        calendarTotalFragment = CalendarTotalFragment()
+        myInfoFragment = MyInfoFragment()
 
-        mainBinding.bottomNavi.setOnNavigationItemReselectedListener { item ->
-            when (item.itemId) {
-                R.id.page_1 -> {
-                    // Respond to navigation item 1 reselection
+        replaceFragment(homeFragment)
+        mainBinding.bottomNavi.setOnItemSelectedListener(
+            object : NavigationBarView.OnItemSelectedListener {
+                override fun onNavigationItemSelected(item: MenuItem): Boolean {
+                    var selectedFragment: Fragment? = null
+                    when (item.itemId) {
+                        R.id.page_1 -> {
+                            replaceFragment(homeFragment)
+                        }
+                        R.id.page_2 -> {
+                            replaceFragment(calendarTotalFragment)
+                        }
+                        R.id.page_3 -> {
+                            replaceFragment(myInfoFragment)
+                        }
+                        else -> return false
+                    }
+                    return true
                 }
-                R.id.page_2 -> {
-                    // Respond to navigation item 2 reselection
-                }
-                R.id.page_3 -> {
-                    // Respond to navigation item 2 reselection
-                }
-            }
-        }
+            },
+        )
     }
 
-//    fun replaceFragment(fragment: Fragment) {
-//        val fragmentTransaction = supportFragmentManager.beginTransaction()
-//        fragmentTransaction.replace(R.id.frameLayout, fragment)
-//        fragmentTransaction.commit()
-//    }
+    private fun replaceFragment(fragment: Fragment?) {
+        if (fragment != null) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.cl_main, fragment)
+                .commit()
+        }
+    }
 }
